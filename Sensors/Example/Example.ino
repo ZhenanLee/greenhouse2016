@@ -22,7 +22,7 @@ DHT dht(DHTPIN, DHTTYPE);
 byte mac[] = {0x20, 0x16, 0x20, 0x16, 0x20, 0x16};
 byte ip [] = {192,168,1,20};
 //IPAddress server = (127, 0, 0, 1);
-byte server[] = {10,109,69,98}; // IP Address (or name) of server to dump data
+byte server[] = {192,168,1,21}; // IP Address (or name) of server to dump data
 EthernetClient client;
 
 int  interval = 5000; // Wait between dumps
@@ -54,11 +54,9 @@ void loop() {
   if (client.connect(server, 80) == 1) {
     Serial.println("-> Connected");
     // Make a HTTP request:
-    client.print( "GET /Example/add_data.php?serial=288884820500006X&&temperature=58.00 HTTP/1.1\r\n");
-    client.print("Host: localhost\r\n");
-    client.print("Connection: close\r\n\r\n");
-
-    client.println();
+    client.println( "GET /Example/add_data.php?serial=288884820500006X&&temperature=58.00 HTTP/1.1");
+    client.println("Host: localhost");
+    client.println("Connection: close");
     client.println();
     
     Serial.println();

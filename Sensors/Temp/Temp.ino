@@ -19,26 +19,42 @@
 // as the current DHT reading algorithm adjusts itself to work on faster procs.
 DHT dht(DHTPIN, DHTTYPE);
 
-byte mac[] = {0x20, 0x16, 0x20, 0x16, 0x20, 0x16};
-byte ip[] = {10,109,69,98};
+byte mac[] = {0x20, 0x16, 0x20, 0x16, 0x20, 0x16};  //EthernetSHIELD
+byte ip[] = {192, 168, 1, 20};                      //EthernetSHIELD
 
-char server[] = "127,0,0,1"; // IP Adres (or name) of server to dump data to
+char server[] = "192.168.1.21"; // IP Adres (or name) of server to dump data to (localhost)
 EthernetClient client;
 
+int  interval = 5000; // Wait between dumps
 
 void setup() {
   Serial.begin(9600);
-    
+
+  // disable SD SPI
+  pinMode(4, OUTPUT);
+  digitalWrite(4, HIGH);
+
+  //enable dht sensor
   Serial.println("begin dht");
   dht.begin();
   Serial.println("dht started");
 
-Ethernet.begin(mac);
-    if (Ethernet.begin(mac) == 0) {
+  //enable ethernet
+  Ethernet.begin(mac);
+  if (Ethernet.begin(mac) == 0) {
     Serial.println("Failed to configure Ethernet using DHCP");
     // no point in carrying on, so do nothing forevermore:
     //while(true);
   }
+
+  Serial.print("IP Address        : ");
+  Serial.println(Ethernet.localIP());
+  Serial.print("Subnet Mask       : ");
+  Serial.println(Ethernet.subnetMask());
+  Serial.print("Default Gateway IP: ");
+  Serial.println(Ethernet.gatewayIP());
+  Serial.print("DNS Server IP     : ");
+  Serial.println(Ethernet.dnsServerIP());
 }
 
 void loop() {
@@ -55,7 +71,7 @@ void loop() {
 
   // Read temperature as Fahrenheit (isFahrenheit = true)
   //float f = dht.readTemperature(true);
-  int m = 1000;
+  int m = 1000;     //Used without moisture sensor
   // Check if any reads failed and exit early (to try again).
   if ( isnan(t) || isnan(h)) {
     Serial.println("Failed to read from DHT sensor!");
@@ -87,31 +103,38 @@ void loop() {
   Serial.print(m);
   Serial.println();
 
+  //Connecting to server
   Serial.println("connecting");
-  if (client.connect(server, 80)) {
-
-    Serial.println("connected");
+  if (client.connect(server, 80) == 1) {
+    Serial.println("Connected");
+    //Make a HTTP request -> add_data.php
     client.print("GET /greenhouse2016/add_data.php?temp=");
-    client.print( "100" );
+    client.print( t );
     client.print("&&");
     client.print("hum=");
-    client.print( "100" );
+    client.print( h );
+    client.print("&&");
     client.print("mos=");
-    client.print( "100" );
-    client.println("HTTP/1.1");
+    client.print( m );
+    client.println(" HTTP/1.1");
     client.print( "Host: " );
     client.println(server);
+    client.println("Connection: close");
+    client.println();
+
+    Serial.println();
   }
   else {
     // if you didn't get a connection to the server:
     Serial.println("connection failed");
   }
+
   if (client.available()) {
     char c = client.read();
     Serial.print(c);
   }
 
-  
+
   // if the server's disconnected, stop the client:
   while (client.connected() )
   {
