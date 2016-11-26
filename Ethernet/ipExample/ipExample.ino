@@ -7,7 +7,7 @@
 byte mac[] = { 0x20, 0x16, 0x20, 0x16, 0x20, 0x16 }; 
 
 // the dns server ip
-byte dnServer[] = {192, 168, 0, 1};
+byte dnServer[] = {127, 0, 0, 1};
 // the router's gateway address:
 IPAddress gateway(192, 168, 0, 1);
 // the subnet:
