@@ -19,8 +19,8 @@
   <div class="row">
     <div class="col-md-4">
       <div class="thumbnail">
-        <a href="http://gh2016/i1.jpg" target="_blank">
-          <img src="http://gh2016/i1.jpg" alt="Pulpit Rock" style="width:100%">
+        <a href="greenhouse.jpg" target="_blank">
+          <img src="greenhouse.jpg" alt="Pulpit Rock" style="width:100%">
           <div class="caption">
             <p>Trump 2016</p>
           </div>
@@ -29,8 +29,8 @@
     </div>
     <div class="col-md-4">
       <div class="thumbnail">
-        <a href="http://gh2016/i2.jpg" target="_blank">
-          <img src="http://gh2016/i2.jpg" alt="Moustiers Sainte Marie" style="width:100%">
+        <a href="greenhouse.jpg" target="_blank">
+          <img src="greenhouse.jpg" alt="Moustiers Sainte Marie" style="width:100%">
           <div class="caption">
             <p>Nobody Love you</p>
           </div>
@@ -39,8 +39,8 @@
     </div>
     <div class="col-md-4">
       <div class="thumbnail">
-        <a href="http://gh2016/i3.jpg" target="_blank">
-          <img src="http://gh2016/i3.jpg" alt="Cinque Terre" style="width:100%">
+        <a href="greenhouse.jpg" target="_blank">
+          <img src="greenhouse.jpg" alt="Cinque Terre" style="width:100%">
           <div class="caption">
             <p>Royal Never Give Up</p>
           </div>

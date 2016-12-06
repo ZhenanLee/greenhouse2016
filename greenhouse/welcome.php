@@ -16,5 +16,15 @@ three important conditions(Temperature, Humidity, and Soil Moisture) in order to
 
 </p>
 
+      <div class="thumbnail">
+        <a href="greenhouse.jpg" target="_blank">
+          <img src="greenhouse.jpg" alt="Greenhouse" style="width:480px""height:720px">
+          <div class="caption">
+            <p>Greenhouse System</p>
+          </div>
+        </a>
+      </div>
+
+
 </div>
 </html>

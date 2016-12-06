@@ -17,16 +17,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-	    <li><a href="table2.php">Database</a></li>
+	    <li><a href="review_data.php">Database</a></li>
 		<li><a href="image.php">Images</a></li>
         <li><a href="video.php">Demo</a></li>
+		<li><a href="graph_temp.php">Temperature Graph</a></li>
+		<li><a href="graph_hum.php">Humidity Graph</a></li>
+		<li><a href="graph_hum.php">Mositure Graph</a></li>
       </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="about.php">About</a></li>
       </ul>
